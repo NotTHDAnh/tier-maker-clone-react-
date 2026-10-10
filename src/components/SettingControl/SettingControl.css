@@ -1,0 +1,37 @@
+.setting-control {
+    display: flex;
+    justify-content: end;
+    background: #000000;
+}
+
+.setting,
+.move-up,
+.move-down {
+    height: 30px;
+    width: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0) invert(1);
+    padding: 10px;
+}
+
+.setting {
+    width: 30px;
+    background-image: url('../../assets/setting.png');
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.move-up,
+.move-down {
+    width: 30px;
+}
+
+.move-up {
+    background-image: url('../../assets/up_arrow.png');
+}
+
+.move-down {
+    background-image: url('../../assets/down_arrow.png');
+}

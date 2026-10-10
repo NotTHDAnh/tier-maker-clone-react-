@@ -1,0 +1,13 @@
+.tier-sort {
+    background-color: #1a1a17;
+    flex: 1;
+}
+
+.tier-row {
+
+    display: flex;
+    align-items: stretch;
+    min-height: 105px;
+    display: flex;
+    border: 1px solid black;
+}

@@ -1,0 +1,18 @@
+.label-holder {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.label-holder span {
+    background-color: transparent;
+    border: none;
+    justify-items: center;
+    text-align: center;
+    overflow: hidden;
+    margin: 5px;
+    padding: 10px;
+    font-size: 30px;
+    color: black;
+}

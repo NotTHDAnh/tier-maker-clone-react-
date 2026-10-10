@@ -1,0 +1,80 @@
+#color-select {
+    display: flex;
+    height: 50px;
+    margin: 0 4px;
+    width: 100%;
+    gap: 10px;
+    flex-wrap: wrap;
+    overflow-x: none;
+    overflow-y: none;
+    width: fit-content;
+}
+
+
+#color-select span {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fff;
+}
+
+#color-select span.selected {
+    border: 3px solid #000;
+}
+
+#close {
+    position: absolute;
+    top: 1;
+    right: 30px;
+}
+
+#close {
+    font-size: 30px;
+    border: none;
+    background: transparent;
+}
+
+.result-modal {
+    position: relative;
+    border: none;
+    border-radius: 12px;
+    padding: 2rem;
+    background: #242323;
+    color: white;
+    box-shadow: 1 0px 0px whitesmoke;
+}
+
+.result-modal[open] {
+    animation: slide-in-from-top 0.35s ease-out;
+}
+
+.result-modal::backdrop {
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.result-modal textarea {
+    width: 100%;
+    background: white;
+    color: black;
+    font-size: 30px;
+}
+
+.modal-button {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px;
+}
+
+.modal-button button {
+    background: #efefef;
+    width: 100%;
+    background: #fff;
+    border: solid 1px #efefef;
+    padding: 10px 50px;
+    font-size: 20px;
+    color: black;
+    border-radius: 12px;
+}
