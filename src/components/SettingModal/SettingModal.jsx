@@ -10,7 +10,7 @@ export default function SettingModal({ ref }) {
     return (
         <dialog ref={ref} className="result-modal m-auto" onClick={e => { if (e.currentTarget === e.target) e.currentTarget.close() }}>
             <form method="dialog">
-                <button id="close">X</button>
+                <button id="close">x</button>
             </form>
             <h1 style={{ color: 'white' }}>Choose a Label Background Color</h1>
             <div id="color-select">

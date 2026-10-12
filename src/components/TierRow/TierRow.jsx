@@ -11,7 +11,6 @@ export const TextContext = createContext(null);
 export const ColorContext = createContext(null);
 
 export default function TierRow({ title, color, id, images = [] }) {
-    const { tiers, setTiers } = useContext(TierContext);
     const [titleTxt, setTitleTxt] = useState(title);
     const [colorTxt, setColorTxt] = useState(color);
     const { ref } = useDroppable({ id: id });
@@ -20,8 +19,7 @@ export default function TierRow({ title, color, id, images = [] }) {
         <ColorContext.Provider value={{ colorTxt, setColorTxt }}>
             <TextContext.Provider value={{ titleTxt, setTitleTxt }}>
                 <div className='tier-row'>
-                    <LabelHolder title={titleTxt} color={colorTxt} id={id} className='label-holder'>
-                    </LabelHolder>
+                    <LabelHolder id={id} className='label-holder' />
                     <div ref={ref} className='tier-sort flex flex-wrap'>
                         <SortableContext items={images.map(img => img.id)}>
                             {images.map((img) => {
