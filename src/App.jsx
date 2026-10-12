@@ -28,9 +28,13 @@ function App() {
         const targetId = target.id;
 
         const getId = (img) => img?.id;
+        // Check if the imgs is from the uploader
         const isFromUploader = unSortedImages.some(img => getId(img) === draggedImg.id);
+        // Get source tier
         const sourceTier = tiers.find(t => (t.images || []).some(img => getId(img) === draggedImg.id));
+        // check if the img is dropped into uploader
         const isDropToUploader = targetId === "uploader" || unSortedImages.some(img => getId(img) === targetId);
+        // find the tier that img is dropped into
         const targetTier = tiers.find(t =>
             t.id === targetId ||
             String(t.id) === String(targetId) ||
@@ -38,12 +42,14 @@ function App() {
         );
         if (isDropToUploader) {
             if (isFromUploader) {
+                // just change order of the img because it only drop from to uploader
                 const oldIndex = unSortedImages.findIndex(img => getId(img) === draggedImg.id);
                 const newIndex = unSortedImages.findIndex(img => getId(img) === targetId);
                 if (oldIndex !== -1 && newIndex !== -1 && oldIndex !== newIndex) {
                     setUnsortedImages(prev => arrayMove(prev, oldIndex, newIndex));
                 }
             } else if (sourceTier) {
+                // if the img is dropped from another tier into uploader
                 setTiers(prev => prev.map(t =>
                     t.id === sourceTier.id
                         ? { ...t, images: (t.images || []).filter(img => getId(img) !== draggedImg.id) }
@@ -59,6 +65,7 @@ function App() {
             }
             setTiers(prevTiers => prevTiers.map(tier => {
                 if (sourceTier && sourceTier.id === targetTier.id && tier.id === targetTier.id) {
+                    // just change order of images in the same tier
                     const oldIndex = (tier.images || []).findIndex(img => getId(img) === draggedImg.id);
                     const newIndex = (tier.images || []).findIndex(img => getId(img) === targetId);
                     if (oldIndex !== -1 && newIndex !== -1 && oldIndex !== newIndex) {
@@ -67,12 +74,14 @@ function App() {
                     return tier;
                 }
                 if (sourceTier && tier.id === sourceTier.id && tier.id !== targetTier.id) {
+                    // delete img from the source tier 
                     return {
                         ...tier,
                         images: (tier.images || []).filter(img => getId(img) !== draggedImg.id)
                     };
                 }
                 if (tier.id === targetTier.id) {
+                    // add new img to the target tier
                     const cleanImages = (tier.images || []).filter(img => getId(img) !== draggedImg.id);
                     return {
                         ...tier,

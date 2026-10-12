@@ -20,7 +20,7 @@ export default function TierRow({ title, color, id, images = [] }) {
         <ColorContext.Provider value={{ colorTxt, setColorTxt }}>
             <TextContext.Provider value={{ titleTxt, setTitleTxt }}>
                 <div className='tier-row'>
-                    <LabelHolder title={titleTxt} color={colorTxt} className='label-holder'>
+                    <LabelHolder title={titleTxt} color={colorTxt} id={id} className='label-holder'>
                     </LabelHolder>
                     <div ref={ref} className='tier-sort flex flex-wrap'>
                         <SortableContext items={images.map(img => img.id)}>
@@ -29,7 +29,7 @@ export default function TierRow({ title, color, id, images = [] }) {
                             })}
                         </SortableContext>
                     </div>
-                    <SettingControl></SettingControl>
+                    <SettingControl id={id}></SettingControl>
                 </div>
             </TextContext.Provider>
         </ColorContext.Provider >
