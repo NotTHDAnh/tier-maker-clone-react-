@@ -48,6 +48,9 @@ function App() {
                 if (oldIndex !== -1 && newIndex !== -1 && oldIndex !== newIndex) {
                     setUnsortedImages(prev => arrayMove(prev, oldIndex, newIndex));
                 }
+                if (newIndex === -1) {
+                    setUnsortedImages(prev => arrayMove(prev, oldIndex, unSortedImages.length - 1));
+                }
             } else if (sourceTier) {
                 // if the img is dropped from another tier into uploader
                 setTiers(prev => prev.map(t =>
@@ -70,6 +73,9 @@ function App() {
                     const newIndex = (tier.images || []).findIndex(img => getId(img) === targetId);
                     if (oldIndex !== -1 && newIndex !== -1 && oldIndex !== newIndex) {
                         return { ...tier, images: arrayMove(tier.images, oldIndex, newIndex) };
+                    }
+                    if (newIndex === -1) {
+                        return { ...tier, images: arrayMove(tier.images, oldIndex, tier.images.length - 1) };
                     }
                     return tier;
                 }
@@ -97,7 +103,7 @@ function App() {
     return (
         <>
             <TierContext value={{ tiers, setTiers }}>
-                <ImgsContext value={{ unSortedImages, handleUpload }}>
+                <ImgsContext value={{ unSortedImages, handleUpload, setUnsortedImages }}>
                     <DragDropProvider onDragEnd={handleDragEnd}>
                         <h1>Tier maker</h1>
                         <TierContainer />

@@ -2,7 +2,7 @@ import { data } from '../../data.js'
 import TierRow from './TierRow/TierRow.jsx';
 import './TierContainer.css'
 import { TierContext } from '../App.jsx';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 export default function TierContainer() {
     const { tiers } = useContext(TierContext);

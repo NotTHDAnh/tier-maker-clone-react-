@@ -35,7 +35,7 @@
 }
 
 .result-modal {
-    position: relative;
+    position: fixed;
     border: none;
     border-radius: 12px;
     padding: 2rem;
