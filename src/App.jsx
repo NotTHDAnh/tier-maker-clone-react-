@@ -16,7 +16,7 @@ function App() {
     const [tiers, setTiers] = useState([...data]);
 
     const handleUpload = (newImgs) => {
-        setUnsortedImages(newImgs);
+        setUnsortedImages(prev => [...prev, ...newImgs]);
     }
 
     const handleDragEnd = (e) => {
